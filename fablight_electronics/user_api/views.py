@@ -9,7 +9,7 @@ class UserList(generics.ListAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
 
-    def get(self, request, *args, **kwargs):
-        queryset = self.get_queryset()
-        data = UserSerializer(queryset, many=True).data
-        return JsonResponse(data=data, safe=False)
+
+class UserRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
