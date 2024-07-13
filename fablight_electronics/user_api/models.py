@@ -6,4 +6,4 @@ class User(AbstractUser):
     date_birth = models.DateTimeField(blank=True, null=True, verbose_name='Дата рождения')
 
     def __str__(self):
-        return f'{self.pk}'
+        return f'{self.username}'

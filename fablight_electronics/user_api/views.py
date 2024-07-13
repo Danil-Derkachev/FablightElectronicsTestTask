@@ -1,8 +1,18 @@
-from django.http import JsonResponse
-from rest_framework import generics
+from rest_framework import generics, status
+from rest_framework.response import Response
+from rest_framework.views import APIView
 
 from .models import User
 from .serializers import UserSerializer
+
+
+class UserByToken(APIView):
+    def post(self, request):
+        data = {
+            'id': str(request.user.pk),
+            'username': str(request.user.username)
+        }
+        return Response(data, status=status.HTTP_201_CREATED)
 
 
 class UserList(generics.ListAPIView):
